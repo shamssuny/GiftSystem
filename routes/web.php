@@ -27,8 +27,9 @@ Route::get('/register','UserRegisterController@index');
 Route::post('/register','UserRegisterController@register');
 Route::get('/forget-password','UserLoginController@showForget');
 Route::post('/forget-password','UserLoginController@resetPass');
-Route::get('/checkpoint','CheckpointController@index');
-Route::post('/checkpoint','CheckpointController@check');
+Route::get('/checkpoint','CheckpointController@index')->middleware('auth');
+Route::post('/checkpoint','CheckpointController@check')->middleware('auth');
+Route::get('/checkpoint/resend','CheckpointController@resend')->middleware('auth');
 
 
 
@@ -36,7 +37,7 @@ Route::group(['middleware'=>['approve','auth']],function (){
     Route::get('/dashboard','UserHomeController@index');
     Route::get('/missions','UserHomeController@showMission');
     Route::get('/missions/click/{id}','UserHomeController@getClick');
-    Route::get('/missions/check','UserHomeController@clickCheck');
+    Route::get('/missions/CE4129F6ABFCA997784923DE8C31004116329453CE4129F6ABFCA997784923DE8C31004116329453','UserHomeController@clickCheck');
     Route::get('/prizes','UserHomeController@showPrize');
     Route::get('/prizes/form/{id}','UserHomeController@orderPage');
     Route::post('/prizes/order/{id}','UserHomeController@orderPrize');

@@ -44,11 +44,12 @@ class UserHomeController extends Controller
         $getValidToken = $userPoint->token;
 
         //work with links
-        $preLink = URL::previous();
-        $a = explode('/go', $preLink);
-        $b = implode('', $a);
-
-        if($getValidToken == session('pointToken') && Mission::find(session('linkId'))->links == $b){
+//        $preLink = URL::previous();
+//        $a = explode('/go', $preLink);
+//        $b = implode('', $a);
+//        dd('var: '.Mission::find(session('linkId'))->links.' || '.$b);
+//        Mission::find(session('linkId'))->links == $b
+        if($getValidToken == session('pointToken')){
             session()->forget('pointToken','linkId');
             $reToken = sha1(uniqid(rand()));
 

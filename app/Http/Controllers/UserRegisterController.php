@@ -32,6 +32,8 @@ class UserRegisterController extends Controller
         $createUser->approve()->create(['code'=> $code]);
         $createUser->point()->create(['total_points'=>0,'daily_count'=>5,'token'=>$token]);
 
+        mail(request('email'),'Registration','Your Code: '.$code);
+
         return redirect('/login')->with('regSuccess','Register Success. Check Mail and Login to continue');
     }
 }

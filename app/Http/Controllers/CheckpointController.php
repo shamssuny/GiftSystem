@@ -31,4 +31,13 @@ class CheckpointController extends Controller
            return redirect()->back()->with('codeError','Wrong Code');
        }
     }
+
+    public function resend()
+    {
+        $user = User::find(Auth::id());
+        $code = $user->approve->code;
+        $mail = $user->email;
+        mail($mail,'Approval','Your code is: '.$code);
+        return redirect()->back()->with('codeError','Code Has Been Sent!');
+    }
 }

@@ -23,7 +23,7 @@
                     {{ csrf_field() }}
                     <input class="form-control" type="text" name="code" placeholder="Approve Code"><br>
                     <input class="btn btn-outline-primary" type="submit" name="submit" value="Confirm">
-                    <a href="">Resend Code</a>
+                    <a href="{{ url('checkpoint/resend') }}">Resend Code</a>
                 </form>
 
             </div>

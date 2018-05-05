@@ -47,7 +47,7 @@ class UserLoginController extends Controller
             $userId = $getMail->first()->id;
             $randPass = rand(10000000,99999999);
             //mail function
-
+            mail($userMail,'Reset Password','Your New Password: '.$randPass);
             User::find($userId)->update(['password' => bcrypt($randPass)]);
             return redirect()->back()->with('resetError','Reset Mail Has Sent!');
         }else{
